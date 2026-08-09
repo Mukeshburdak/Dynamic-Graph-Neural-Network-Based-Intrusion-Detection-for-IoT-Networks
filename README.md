@@ -64,7 +64,7 @@ The 34 individual attack folders are mapped to **7 categories** (+ Benign) in `s
 
 ```bash
 git clone <repo-url>
-cd iot-intrusion-detection
+cd Dynamic-Graph-Neural-Network-Based-Intrusion-Detection-for-IoT-Networks
 python -m venv venv
 source venv/bin/activate        # Windows: venv\Scripts\activate
 pip install -r requirements.txt
