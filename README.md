@@ -136,3 +136,11 @@ After running the full pipeline, results are available in:
 - **No real network topology**: graphs are built from feature similarity, not actual IP-level connections (CICIoT2023's public CSVs don't include IP addresses).
 - **Windowing breaks strict temporal order** post-balancing (class balancing shuffles rows). Graphs represent similarity-based snapshots of traffic batches rather than a strict chronological stream.
 - **Dashboard predictions use baseline models**, not GNNs, since single-flow inference has no graph context to aggregate over.
+
+## Acknowledgments
+
+This project was developed by Mukesh Burdak with the assistance of **Claude** (Anthropic) for code architecture, implementation, debugging, and documentation.
+
+## License
+
+This project is licensed under the MIT License — see [LICENSE](LICENSE) for details.

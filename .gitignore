@@ -12,12 +12,10 @@ data/graphs/
 models/*.pt
 models/*.joblib
 
-# ---- Results (regenerate via evaluation pipeline) ----
-results/metrics/*
-results/figures/*
-results/*.csv
-!results/metrics/.gitkeep
-!results/figures/.gitkeep
+# ---- Results ----
+# NOTE: results/ (metrics, figures, comparison.csv) are intentionally
+# tracked and committed to GitHub so the project's actual output is
+# visible in the repo -- not ignored.
 
 # ---- Python ----
 __pycache__/
