@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IoT Intrusion Detection Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+</head>
+<body>
+
+    <header class="topbar">
+        <h1>IoT Intrusion Detection <span class="accent">/ Dynamic GNN</span></h1>
+        <p class="subtitle">CICIoT2023 &middot; Similarity-graph GNNs (GCN, GraphSAGE, GAT) vs. classical ML baselines</p>
+    </header>
+
+    <main>
+
+        <!-- ===================== MODEL COMPARISON ===================== -->
+        <section class="card">
+            <h2>Model Comparison</h2>
+            {% if comparison_records %}
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Model</th>
+                        <th>Accuracy</th>
+                        <th>Macro Precision</th>
+                        <th>Macro Recall</th>
+                        <th>Macro F1</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in comparison_records %}
+                    <tr>
+                        <td class="model-name">{{ row.model_name }}</td>
+                        <td>{{ "%.4f"|format(row.accuracy) }}</td>
+                        <td>{{ "%.4f"|format(row.macro_precision) }}</td>
+                        <td>{{ "%.4f"|format(row.macro_recall) }}</td>
+                        <td><strong>{{ "%.4f"|format(row.macro_f1) }}</strong></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="chart-container">
+                <canvas id="comparisonChart"></canvas>
+            </div>
+            {% else %}
+            <p class="empty-state">No results yet. Run <code>python main.py --stage evaluate</code> after training.</p>
+            {% endif %}
+        </section>
+
+        <!-- ===================== CLASS DISTRIBUTION ===================== -->
+        <section class="card">
+            <h2>Training Set Class Distribution</h2>
+            <div class="chart-container">
+                <canvas id="classDistributionChart"></canvas>
+            </div>
+        </section>
+
+        <!-- ===================== TRAINING CURVES ===================== -->
+        <section class="card">
+            <h2>Training Curves</h2>
+            <div class="controls">
+                <label for="trainingModelSelect">Model:</label>
+                <select id="trainingModelSelect">
+                    <option value="gcn">GCN</option>
+                    <option value="graphsage">GraphSAGE</option>
+                    <option value="gat">GAT</option>
+                </select>
+            </div>
+            <div class="chart-container">
+                <canvas id="trainingLossChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <canvas id="trainingF1Chart"></canvas>
+            </div>
+        </section>
+
+        <!-- ===================== CONFUSION MATRIX ===================== -->
+        <section class="card">
+            <h2>Confusion Matrix</h2>
+            <div class="controls">
+                <label for="cmModelSelect">Model:</label>
+                <select id="cmModelSelect">
+                    <option value="gcn">GCN</option>
+                    <option value="graphsage">GraphSAGE</option>
+                    <option value="gat">GAT</option>
+                </select>
+            </div>
+            <img id="cmImage" class="figure-image" src="/figures/confusion_matrix_gcn.png" alt="Confusion matrix"
+                 onerror="this.style.display='none'; document.getElementById('cmFallback').style.display='block';">
+            <p id="cmFallback" class="empty-state" style="display:none;">
+                No confusion matrix image found for this model yet.
+            </p>
+        </section>
+
+        <!-- ===================== LIVE PREDICTION DEMO ===================== -->
+        <section class="card">
+            <h2>Live Prediction Demo</h2>
+            <p class="hint">
+                Enter values for a single network flow's features and get a predicted attack category
+                from a trained baseline model (Random Forest / XGBoost / Logistic Regression).
+                Leave fields blank to default to 0.
+            </p>
+
+            <div class="controls">
+                <label for="predictModelSelect">Baseline model:</label>
+                <select id="predictModelSelect">
+                    {% for name in baseline_model_names %}
+                    <option value="{{ name }}">{{ name }}</option>
+                    {% endfor %}
+                </select>
+                <button id="loadSampleBtn" type="button">Fill with random values</button>
+            </div>
+
+            <div id="featureFormContainer" class="feature-grid">
+                <!-- populated dynamically by dashboard.js -->
+            </div>
+
+            <button id="predictBtn" type="button" class="predict-btn">Predict</button>
+
+            <div id="predictionResult" class="prediction-result" style="display:none;">
+                <h3>Prediction: <span id="predictedClass" class="accent"></span></h3>
+                <div class="chart-container small">
+                    <canvas id="probabilityChart"></canvas>
+                </div>
+            </div>
+            <p id="predictionError" class="error-state" style="display:none;"></p>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Dynamic Graph Neural Network-based IoT Intrusion Detection &middot; CICIoT2023</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>

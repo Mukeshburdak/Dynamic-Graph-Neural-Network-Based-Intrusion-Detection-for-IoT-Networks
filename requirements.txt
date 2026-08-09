@@ -1,0 +1,47 @@
+# ===========================================================
+# requirements.txt
+# Dynamic Graph Neural Network-based IoT Intrusion Detection
+# CICIoT2023 | GCN / GraphSAGE / GAT + classical ML baselines
+# ===========================================================
+#
+# Install with:
+#   pip install -r requirements.txt
+#
+# NOTE ON PyTorch / PyTorch Geometric:
+# torch and torch-geometric have platform- and CUDA-version-specific
+# wheels. The pinned versions below assume CPU-only or a standard CUDA 12.1
+# environment. If installation fails or you need GPU acceleration matching
+# your specific CUDA version, install torch first following the official
+# selector at https://pytorch.org/get-started/locally/ and the matching
+# torch-geometric wheel at https://pytorch-geometric.readthedocs.io/en/latest/install/installation.html
+# before installing the rest of this file.
+
+# ---- Core deep learning ----
+torch==2.3.1
+torch-geometric==2.5.3
+
+# ---- Data handling ----
+numpy==1.26.4
+pandas==2.2.2
+
+# ---- Classical ML / preprocessing ----
+scikit-learn==1.5.0
+xgboost==2.0.3
+joblib==1.4.2
+
+# ---- Graph utilities (for visualization.py's networkx graph plotting) ----
+networkx==3.3
+
+# ---- Visualization ----
+matplotlib==3.9.0
+seaborn==0.13.2
+
+# ---- Dashboard (Flask web app) ----
+flask==3.0.3
+
+# ---- Notebooks (for notebooks/ 01-05) ----
+jupyter==1.0.0
+ipykernel==6.29.4
+
+# ---- Testing ----
+pytest==8.2.2

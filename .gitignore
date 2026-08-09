@@ -1,0 +1,68 @@
+# ===========================================================
+# .gitignore
+# Dynamic Graph Neural Network-based IoT Intrusion Detection
+# ===========================================================
+
+# ---- Dataset (too large for git; download separately, see README) ----
+data/raw/
+data/processed/
+data/graphs/
+
+# ---- Trained model checkpoints (regenerate via training pipeline) ----
+models/*.pt
+models/*.joblib
+
+# ---- Results (regenerate via evaluation pipeline) ----
+results/metrics/*
+results/figures/*
+results/*.csv
+!results/metrics/.gitkeep
+!results/figures/.gitkeep
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# ---- Virtual environments ----
+venv/
+.venv/
+env/
+ENV/
+
+# ---- Jupyter notebooks ----
+.ipynb_checkpoints/
+notebooks/*.html
+
+# ---- Testing / caching ----
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# ---- Environment / secrets ----
+.env
+*.env.local
+
+# ---- OS / editor files ----
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+
+# ---- Flask ----
+dashboard/__pycache__/
+instance/
+.flask_session/
+
+# ---- Logs ----
+*.log
+logs/
