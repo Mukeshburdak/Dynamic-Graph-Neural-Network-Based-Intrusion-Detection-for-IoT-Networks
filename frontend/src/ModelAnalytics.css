@@ -1,0 +1,655 @@
+
+/* =========================================
+   MODEL ANALYTICS - MAIN LAYOUT
+========================================= */
+
+.model-analytics {
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  color: #e2e8f0;
+  animation: analyticsFade 0.35s ease;
+}
+
+@keyframes analyticsFade {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.analytics-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.analytics-eyebrow {
+  color: #38bdf8;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin: 0 0 8px;
+}
+
+.analytics-header h1 {
+  color: #f8fafc;
+  font-size: 27px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.analytics-subtitle {
+  color: #94a3b8;
+  font-size: 13px;
+  margin-top: 9px;
+  line-height: 1.6;
+}
+
+.analytics-refresh {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: #14243a;
+  color: #e2e8f0;
+  border: 1px solid #334155;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: 0.2s ease;
+}
+
+.analytics-refresh:hover {
+  background: #1e3a5f;
+  border-color: #38bdf8;
+  color: #fff;
+}
+
+.analytics-refresh:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* =========================================
+   SUMMARY CARDS
+========================================= */
+
+.analytics-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.analytics-stat {
+  position: relative;
+  overflow: hidden;
+  background: #101b2c;
+  border: 1px solid #273449;
+  border-radius: 11px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  transition: 0.2s ease;
+}
+
+.analytics-stat:hover {
+  border-color: #475569;
+  transform: translateY(-2px);
+}
+
+.analytics-stat-icon {
+  width: 39px;
+  height: 39px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9px;
+  margin-bottom: 5px;
+}
+
+.blue-icon {
+  background: rgba(56, 189, 248, 0.13);
+  color: #38bdf8;
+}
+
+.purple-icon {
+  background: rgba(167, 139, 250, 0.13);
+  color: #a78bfa;
+}
+
+.green-icon {
+  background: rgba(52, 211, 153, 0.13);
+  color: #34d399;
+}
+
+.analytics-stat > span {
+  color: #94a3b8;
+  font-size: 12px;
+}
+
+.analytics-stat strong {
+  color: #f8fafc;
+  font-size: 27px;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.analytics-stat small {
+  color: #64748b;
+  font-size: 11px;
+}
+
+/* =========================================
+   PANELS
+========================================= */
+
+.analytics-panel {
+  background: #101b2c;
+  border: 1px solid #273449;
+  border-radius: 11px;
+  padding: 21px;
+  min-width: 0;
+}
+
+.analytics-panel-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 22px;
+}
+
+.analytics-panel-heading h2 {
+  color: #f1f5f9;
+  font-size: 16px;
+  font-weight: 650;
+  margin: 0;
+}
+
+.analytics-panel-heading p {
+  color: #64748b;
+  font-size: 12px;
+  margin: 7px 0 0;
+  line-height: 1.5;
+}
+
+.analytics-tag {
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: 5px;
+  padding: 6px 9px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  white-space: nowrap;
+}
+
+/* =========================================
+   CHARTS
+========================================= */
+
+.analytics-chart {
+  width: 100%;
+  height: 320px;
+  min-width: 0;
+}
+
+.training-chart {
+  height: 340px;
+  width: 100%;
+}
+
+.recharts-text {
+  fill: #94a3b8;
+}
+
+.recharts-tooltip-wrapper {
+  outline: none;
+}
+
+/* =========================================
+   MODEL METRICS TABLE
+========================================= */
+
+.analytics-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.analytics-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 650px;
+}
+
+.analytics-table th {
+  text-align: left;
+  color: #94a3b8;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 13px 15px;
+  border-bottom: 1px solid #334155;
+  white-space: nowrap;
+}
+
+.analytics-table td {
+  color: #cbd5e1;
+  font-size: 12px;
+  padding: 15px;
+  border-bottom: 1px solid #1e293b;
+}
+
+.analytics-table tbody tr {
+  transition: background 0.2s ease;
+}
+
+.analytics-table tbody tr:hover {
+  background: rgba(56, 189, 248, 0.045);
+}
+
+.analytics-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.analytics-model-name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #f1f5f9;
+  font-weight: 600;
+}
+
+/* =========================================
+   FEATURE EXPLORER
+========================================= */
+
+.feature-search {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #0b1423;
+  border: 1px solid #334155;
+  border-radius: 7px;
+  padding: 0 13px;
+  margin-bottom: 17px;
+  color: #64748b;
+  transition: 0.2s ease;
+}
+
+.feature-search:focus-within {
+  border-color: #38bdf8;
+}
+
+.feature-search input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #e2e8f0;
+  font-size: 12px;
+  padding: 12px 0;
+}
+
+.feature-search input::placeholder {
+  color: #64748b;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.feature-item {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #0b1423;
+  border: 1px solid #273449;
+  border-radius: 6px;
+  padding: 11px 12px;
+  transition: 0.2s ease;
+}
+
+.feature-item:hover {
+  border-color: #38bdf8;
+  background: #122239;
+}
+
+.feature-item span {
+  color: #38bdf8;
+  font-size: 10px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.feature-item strong {
+  color: #cbd5e1;
+  font-size: 11px;
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+
+.feature-empty {
+  color: #94a3b8;
+  font-size: 12px;
+  text-align: center;
+  padding: 20px;
+}
+
+/* =========================================
+   TRAINING PERFORMANCE
+========================================= */
+
+.analytics-select {
+  background: #0b1423;
+  color: #e2e8f0;
+  border: 1px solid #334155;
+  border-radius: 7px;
+  padding: 9px 12px;
+  outline: none;
+  font-size: 12px;
+  max-width: 190px;
+  cursor: pointer;
+}
+
+.analytics-select:focus {
+  border-color: #38bdf8;
+}
+
+.analytics-select option {
+  background: #101b2c;
+  color: #e2e8f0;
+}
+
+.metric-tabs {
+  display: flex;
+  gap: 9px;
+  margin: 15px 0 20px;
+  flex-wrap: wrap;
+}
+
+.metric-tabs button {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 15px;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  color: #94a3b8;
+  background: #0b1423;
+  cursor: pointer;
+  font-size: 12px;
+  transition: 0.2s ease;
+}
+
+.metric-tabs button:hover {
+  color: #fff;
+  border-color: #38bdf8;
+}
+
+.metric-tabs button.active {
+  background: rgba(56, 189, 248, 0.13);
+  color: #38bdf8;
+  border-color: #38bdf8;
+}
+
+/* =========================================
+   CONFUSION MATRIX
+========================================= */
+
+.matrix-wrapper {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.matrix-axis-title {
+  text-align: center;
+  color: #94a3b8;
+  font-size: 12px;
+  margin-bottom: 12px;
+}
+
+.matrix-layout {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.matrix-y-label {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  color: #94a3b8;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.matrix-scroll {
+  width: 100%;
+  overflow-x: auto;
+  padding: 5px 3px 12px;
+}
+
+.confusion-matrix {
+  display: grid;
+  gap: 5px;
+  min-width: 560px;
+}
+
+.matrix-label {
+  color: #cbd5e1;
+  font-size: 10px;
+  font-weight: 600;
+  text-align: center;
+  padding: 8px 2px;
+  overflow-wrap: anywhere;
+  min-height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.matrix-cell {
+  min-height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  border-radius: 5px;
+  color: #f8fafc;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: help;
+  transition: transform 0.15s ease;
+}
+
+.matrix-cell:hover {
+  transform: scale(1.06);
+  z-index: 1;
+}
+
+.matrix-cell.matrix-correct {
+  outline: 2px solid #34d399;
+  outline-offset: -2px;
+}
+
+.matrix-legend {
+  display: flex;
+  gap: 22px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+  color: #94a3b8;
+  font-size: 11px;
+}
+
+.matrix-legend span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.matrix-legend i {
+  width: 11px;
+  height: 11px;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.legend-blue {
+  background: #38bdf8;
+}
+
+.legend-green {
+  background: #34d399;
+}
+
+/* =========================================
+   LOADING AND ERROR STATES
+========================================= */
+
+.analytics-message {
+  min-height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #94a3b8;
+  font-size: 13px;
+  text-align: center;
+  padding: 20px;
+}
+
+.analytics-error {
+  color: #fb7185;
+  flex-direction: column;
+}
+
+.analytics-error button {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 14px;
+  background: #14243a;
+  border: 1px solid #475569;
+  color: #e2e8f0;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.analytics-error button:hover {
+  border-color: #38bdf8;
+}
+
+.loading-icon {
+  animation: analyticsSpin 1.2s linear infinite;
+}
+
+@keyframes analyticsSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================================
+   DISCLAIMER
+========================================= */
+
+.analytics-disclaimer {
+  color: #64748b;
+  font-size: 11px;
+  line-height: 1.7;
+  padding: 0 3px;
+}
+
+/* =========================================
+   RESPONSIVE DESIGN
+========================================= */
+
+@media (max-width: 1000px) {
+  .feature-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .analytics-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .analytics-header h1 {
+    font-size: 23px;
+  }
+
+  .analytics-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .analytics-panel {
+    padding: 15px;
+  }
+
+  .analytics-panel-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .analytics-chart {
+    height: 280px;
+  }
+
+  .training-chart {
+    height: 280px;
+  }
+
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .analytics-select {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .matrix-cell {
+    min-height: 45px;
+    font-size: 10px;
+  }
+
+  .matrix-legend {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 420px) {
+  .metric-tabs {
+    gap: 6px;
+  }
+
+  .metric-tabs button {
+    padding: 8px 10px;
+    font-size: 11px;
+  }
+
+  .analytics-stat strong {
+    font-size: 23px;
+  }
+}

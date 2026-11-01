@@ -181,7 +181,34 @@ def train_and_evaluate_baseline(
         zero_division=0,
     )
     cm = confusion_matrix(y_test, y_pred).tolist()
+        # Save the confusion matrix for the React dashboard.
+    os.makedirs(config.METRICS_DIR, exist_ok=True)
 
+    labels = list(range(len(config.CLASS_NAMES)))
+
+    cm_array = confusion_matrix(
+        y_test,
+        y_pred,
+        labels=labels
+    )
+
+    cm_df = pd.DataFrame(
+        cm_array,
+        index=config.CLASS_NAMES,
+        columns=config.CLASS_NAMES
+    )
+
+    cm_path = os.path.join(
+        config.METRICS_DIR,
+        f"{name.lower()}_confusion_matrix.csv"
+    )
+
+    cm_df.index.name = "Actual"
+    cm_df.to_csv(cm_path)
+
+    logger.info("Saved confusion matrix to: %s", cm_path)
+
+    cm = cm_array.tolist()
     logger.info(
         f"{name} -> accuracy={accuracy:.4f}, macro_precision={precision:.4f}, "
         f"macro_recall={recall:.4f}, macro_f1={f1:.4f}"
